@@ -39,18 +39,8 @@ define Package/qiperfd/description
  qiperfd is a daemon which control iperf2/3.
 endef
 
-define Package/qiperfd/conffiles
-/etc/config/uhttpd
-/etc/uhttpd.crt
-/etc/uhttpd.key
-endef
-
-
 define Package/qiperfd/install
-	#$(INSTALL_DIR) $(1)/etc/init.d $(1)/etc/config $(1)/usr/sbin
 	$(INSTALL_BIN) ./files/qiperfd.init $(1)/etc/init.d/qiperfd
-	#$(INSTALL_CONF) ./files/uhttpd.config $(1)/etc/config/uhttpd
-	#$(VERSION_SED_SCRIPT) $(1)/etc/config/uhttpd
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd $(1)/usr/sbin/qiperfd
 endef
 
