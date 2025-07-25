@@ -40,8 +40,8 @@ define Package/qiperfd/description
 endef
 
 define Package/qiperfd/install
-	$(INSTALL_BIN) ./files/qiperfd.init $(1)/etc/init.d/qiperfd
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd $(1)/usr/sbin/qiperfd
+  $(INSTALL_BIN) ./files/qiperfd.init $(1)/etc/init.d/qiperfd
+  $(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd $(1)/usr/sbin/qiperfd
 endef
 
 $(eval $(call BuildPackage,qiperfd))
