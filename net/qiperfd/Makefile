@@ -47,6 +47,7 @@ define Package/qiperfd/install
 endef
 
 define Build/Configure
+	$(INSTALL_DIR) $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++
 	$(CP) ./files/qplatformdefs.h $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qplatformdefs.h
 	$(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	$(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
