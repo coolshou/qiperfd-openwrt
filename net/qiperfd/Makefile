@@ -26,7 +26,7 @@ include $(INCLUDE_DIR)/version.mk
 define Package/$(PKG_NAME)/default
   SECTION:=net
   CATEGORY:=Network
-  TITLE:=qiperfd - Quick iperf daemon
+  TITLE:=qiperfd
   URL:=https://github.com/coolshou/qiperf
 endef
 
