@@ -12,7 +12,7 @@ PKG_VERSION:=0.13
 PKG_RELEASE:=11407.03
 PKG_MD5SUM:=39467a8ea4951256e50f7c86f502e855
 
-PKG_SOURCE:=qiperf-$(PKG_VERSION).$(PKG_RELEASE).tar.gz qt-everywhere-opensource-src-$(PKG_VERSION).$(PKG_RELEASE).tar.xz
+PKG_SOURCE:=qiperf-$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf/archive/refs/tags/$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperf-$(PKG_VERSION).$(PKG_RELEASE)
 PKG_BUILD_PARALLEL:=1
