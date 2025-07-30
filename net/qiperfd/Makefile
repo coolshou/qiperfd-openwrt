@@ -47,6 +47,9 @@ define Package/qiperfd/install
 endef
 
 define Build/Configure
+	$(CP) ./files/qplatformdefs.h $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qplatformdefs.h
+	$(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
+	$(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	(cd $(PKG_BUILD_DIR)/qiperfd ; \
 	TARGET_CC="$(TARGET_CROSS)gcc" \
 	TARGET_CXX="$(TARGET_CROSS)g++" \
