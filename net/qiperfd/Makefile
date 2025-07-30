@@ -23,23 +23,23 @@ PKG_MAINTAINER:=Jimmy
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/version.mk
 
-define Package/$(PKG_NAME)/default
+define Package/qiperfd/default
   SECTION:=net
   CATEGORY:=Network
   TITLE:=qiperfd
   URL:=https://github.com/coolshou/qiperf
 endef
 
-define Package/$(PKG_NAME)
+define Package/qiperfd
   $(Package/qiperfd/default)
   DEPENDS:= +qt5-core +qt5-network +qt5-widgets +qt5-websockets +qt5-serialport
 endef
 
-define Package/$(PKG_NAME)/description
+define Package/qiperfd/description
  qiperfd is a daemon which control iperf2/3.
 endef
 
-define Package/$(PKG_NAME)/install
+define Package/qiperfd/install
   $(INSTALL_BIN) ./files/qiperfd.init $(1)/etc/init.d/qiperfd
   $(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd $(1)/usr/sbin/qiperfd
 endef
