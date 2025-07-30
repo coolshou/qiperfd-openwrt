@@ -46,7 +46,7 @@ define Package/qiperfd/install
 endef
 
 define Build/Configure
-	(cd $(PKG_BUILD_DIR) ; \
+	(cd $(PKG_BUILD_DIR)/qiperfd ; \
 	TARGET_CC="$(TARGET_CROSS)gcc" \
 	TARGET_CXX="$(TARGET_CROSS)g++" \
 	TARGET_AR="$(TARGET_CROSS)ar cqs" \
