@@ -59,7 +59,7 @@ define Build/Configure
 	TARGET_INCDIRS="$(TARGET_INCDIRS)" \
 	TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
 	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-	qmake -spec ../../qt-everywhere-src-5.15.17/qtbase/mkspecs/linux-openwrt-g++/qmake.conf
+	qmake
 	)
 endef
 
