@@ -60,7 +60,7 @@ define Build/Configure
 		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
 		CXXFLAGS= \
 		LDFLAGS= \
-		qmake
+		qmake;
 	)
 endef
 
@@ -79,7 +79,7 @@ define Build/Compile
 	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
 	PKG_CONFIG_SYSROOT="$(STAGING_DIR)" \
 	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-	$(MAKE) -j4 -C $(PKG_BUILD_DIR)
+	$(MAKE) -j4 -C $(PKG_BUILD_DIR);
 endef
 
 $(eval $(call BuildPackage,qiperfd))
