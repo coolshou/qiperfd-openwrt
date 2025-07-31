@@ -8,13 +8,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qiperfd
-PKG_VERSION:=0.13
-PKG_RELEASE:=11407.03
+PKG_VERSION:=0.14
+PKG_RELEASE:=11407.31
 PKG_MD5SUM:=243657483fc3e8bead7e37663fb0a081
 
 # package should include git submodule!!
-PKG_SOURCE:=qiperf-$(PKG_VERSION).$(PKG_RELEASE).tar.gz
-PKG_SOURCE_URL:=https://github.com/coolshou/qiperf/archive/refs/tags/$(PKG_VERSION).$(PKG_RELEASE).tar.gz
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
+PKG_SOURCE_VERSION:=ac8eb52698310b764d9658c66cf7f104b514736b
+#PKG_SOURCE:=qiperf-$(PKG_VERSION).$(PKG_RELEASE).tar.gz
+#PKG_SOURCE_URL:=https://github.com/coolshou/qiperf/archive/refs/tags/$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperf-$(PKG_VERSION).$(PKG_RELEASE)
 PKG_BUILD_PARALLEL:=0
 PKG_USE_MIPS16:=0
