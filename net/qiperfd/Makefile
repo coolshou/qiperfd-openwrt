@@ -51,19 +51,19 @@ define Build/Configure
 	$(CP) ./files/qplatformdefs.h $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qplatformdefs.h
 	$(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	$(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
-	(cd $(PKG_BUILD_DIR)/qiperfd ; \
-	TARGET_CC="$(TARGET_CROSS)gcc" \
-	TARGET_CXX="$(TARGET_CROSS)g++" \
-	TARGET_AR="$(TARGET_CROSS)ar cqs" \
-	TARGET_OBJCOPY="$(TARGET_CROSS)objcopy" \
-	TARGET_RANLIB="$(TARGET_CROSS)ranlib" \
-	TARGET_CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-	TARGET_CXXFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-	TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) -lpthread -lrt" \
-	TARGET_INCDIRS="$(TARGET_INCDIRS)" \
-	TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
-	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-	qmake QMAKESPEC=$(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/
+	( cd $(PKG_BUILD_DIR)/qiperfd ; \
+		TARGET_CC="$(TARGET_CROSS)gcc" \
+		TARGET_CXX="$(TARGET_CROSS)g++" \
+		TARGET_AR="$(TARGET_CROSS)ar cqs" \
+		TARGET_OBJCOPY="$(TARGET_CROSS)objcopy" \
+		TARGET_RANLIB="$(TARGET_CROSS)ranlib" \
+		TARGET_CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
+		TARGET_CXXFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
+		TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) -lpthread -lrt" \
+		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
+		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
+		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+		qmake QMAKESPEC=$(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/
 	)
 endef
 
