@@ -54,6 +54,12 @@ define Build/Configure
 	# $(CP) ./files/qplatformdefs.h $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qplatformdefs.h
 	# $(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	# $(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
+	( cd $(PKG_BUILD_DIR)/lib/qssh/botan; \
+		python3 ./configure.py --disable-shared-library \
+	)
+	( cd $(PKG_BUILD_DIR)/lib/qssh; \
+		qmake QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
+	)
 	( cd $(PKG_BUILD_DIR)/qiperfd ; \
 		TARGET_CC="$(TARGET_CROSS)gcc" \
 		TARGET_CXX="$(TARGET_CROSS)g++" \
@@ -85,6 +91,8 @@ define Build/Compile
 	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
 	PKG_CONFIG_SYSROOT="$(STAGING_DIR)" \
 	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+	$(MAKE) -j4 -C $(PKG_BUILD_DIR)/lib/qssh/botan; \
+	$(MAKE) -j4 -C $(PKG_BUILD_DIR)/lib/qssh; \
 	$(MAKE) -j4 -C $(PKG_BUILD_DIR)/qiperfd;
 endef
 
