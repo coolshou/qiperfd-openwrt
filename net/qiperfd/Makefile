@@ -55,7 +55,13 @@ define Build/Configure
 	# $(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	# $(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	( cd $(PKG_BUILD_DIR)/lib/qssh/botan; \
-		python3 ./configure.py --disable-shared-library \
+		python3 ./configure.py \
+		--cc-bin=$(TARGET_CROSS)g++ \
+		--ar-command="$(TARGET_CROSS)ar" \
+		--ar-options="cqs" \
+		--cxxflags="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
+		--ldflags="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
+		--disable-shared-library \
 	)
 	( cd $(PKG_BUILD_DIR)/lib/qssh; \
 		qmake QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
