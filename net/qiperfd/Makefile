@@ -18,7 +18,7 @@ PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
 PKG_SOURCE_VERSION:=ac8eb52698310b764d9658c66cf7f104b514736b
 #PKG_SOURCE:=qiperf-$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 #PKG_SOURCE_URL:=https://github.com/coolshou/qiperf/archive/refs/tags/$(PKG_VERSION).$(PKG_RELEASE).tar.gz
-PKG_BUILD_DIR=$(BUILD_DIR)/qiperf-$(PKG_VERSION).$(PKG_RELEASE)
+PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=0
 PKG_USE_MIPS16:=0
 PKG_BUILD_DEPENDS:= qt5
@@ -50,10 +50,10 @@ define Package/qiperfd/install
 endef
 
 define Build/Configure
-	$(INSTALL_DIR) $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++
-	$(CP) ./files/qplatformdefs.h $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qplatformdefs.h
-	$(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
-	$(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
+	# $(INSTALL_DIR) $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++
+	# $(CP) ./files/qplatformdefs.h $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qplatformdefs.h
+	# $(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
+	# $(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	( cd $(PKG_BUILD_DIR)/qiperfd ; \
 		TARGET_CC="$(TARGET_CROSS)gcc" \
 		TARGET_CXX="$(TARGET_CROSS)g++" \
@@ -66,7 +66,7 @@ define Build/Configure
 		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
 		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
 		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-		qmake QMAKESPEC=$(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/ \
+		qmake QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 endef
 
