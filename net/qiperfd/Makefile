@@ -15,7 +15,7 @@ PKG_RELEASE:=11407.31
 # package should include git submodule!!
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
-PKG_SOURCE_VERSION:=5a09b4a9e0be8f25089ccce9c3a67dece33c24fe
+PKG_SOURCE_VERSION:=41031817dee174e3379e47dd1b4878b1653d2d13
 #PKG_SOURCE:=qiperf-$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 #PKG_SOURCE_URL:=https://github.com/coolshou/qiperf/archive/refs/tags/$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
