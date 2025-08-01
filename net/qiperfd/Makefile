@@ -15,7 +15,7 @@ PKG_RELEASE:=11407.31
 # package should include git submodule!!
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
-PKG_SOURCE_VERSION:=41031817dee174e3379e47dd1b4878b1653d2d13
+PKG_SOURCE_VERSION:=81fc0c8221404588021c7b4abae56cd80ae02744
 #PKG_SOURCE:=qiperf-$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 #PKG_SOURCE_URL:=https://github.com/coolshou/qiperf/archive/refs/tags/$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
@@ -66,7 +66,7 @@ define Build/Configure
 		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
 		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
 		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-		qmake "QMAKE_CXXFLAGS += -fpermissive" QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
+		qmake "QMAKE_CXXFLAGS+=-fpermissive" QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 endef
 
