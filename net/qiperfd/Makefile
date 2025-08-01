@@ -85,7 +85,7 @@ define Build/Compile
 	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
 	PKG_CONFIG_SYSROOT="$(STAGING_DIR)" \
 	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-	$(MAKE) -j4 -C $(PKG_BUILD_DIR);
+	$(MAKE) -j4 -C $(PKG_BUILD_DIR)/qiperfd;
 endef
 
 $(eval $(call BuildPackage,qiperfd))
