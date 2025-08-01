@@ -66,7 +66,7 @@ define Build/Configure
 		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
 		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
 		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-		qmake QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
+		qmake "QMAKE_CXXFLAGS += -fpermissive" QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 endef
 
