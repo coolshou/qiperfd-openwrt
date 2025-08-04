@@ -15,7 +15,7 @@ PKG_RELEASE:=11407.31
 # package should include git submodule!!
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
-PKG_SOURCE_VERSION:=81fc0c8221404588021c7b4abae56cd80ae02744
+PKG_SOURCE_VERSION:=42bc7392451debf231d50322da35b8221e8d1fad
 #PKG_SOURCE:=qiperf-$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 #PKG_SOURCE_URL:=https://github.com/coolshou/qiperf/archive/refs/tags/$(PKG_VERSION).$(PKG_RELEASE).tar.gz
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
@@ -50,7 +50,8 @@ define Package/qiperfd/install
 	$(INSTALL_DIR) $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/Release/qiperfd $(1)/usr/sbin/qiperfd
 	$(INSTALL_DIR) $(1)/usr/sbin/linux
-	$(INSTALL_DIR) $(1)/usr/sbin/$(TARGET_ARCH)_$(TARGET_SUFFIX)
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd/linux/$(TARGET_ARCH_PACKAGES)_$(TARGET_SUFFIX)/iperf3 $(1)/usr/sbin/linux
+	#$(TARGET_ARCH_PACKAGES)_$(TARGET_SUFFIX)
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd/linux/
 endef
 
