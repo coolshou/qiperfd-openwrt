@@ -50,7 +50,7 @@ define Package/qiperfd/install
 	$(INSTALL_DIR) $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/Release/qiperfd $(1)/usr/sbin/qiperfd
 	$(INSTALL_DIR) $(1)/usr/sbin/linux
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd/linux/$(TARGET_ARCH_PACKAGES)_$(TARGET_SUFFIX)/iperf3 $(1)/usr/sbin/linux
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd/linux/$(ARCH)_$(TARGET_SUFFIX)/iperf3 $(1)/usr/sbin/linux
 	#$(TARGET_ARCH_PACKAGES)_$(TARGET_SUFFIX)
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd/linux/
 endef
