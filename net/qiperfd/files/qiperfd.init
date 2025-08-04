@@ -5,17 +5,17 @@ START=50
 STOP=15
 
 QIPERFD=qiperfd
-QIPERFD_BIN="/usr/sbin/$(QIPERFD)"
+QIPERFD_BIN="/usr/sbin/$QIPERFD"
 
 start() {
-        echo start $(QIPERFD)
+        echo start $QIPERFD
         # commands to launch application
         $QIPERFD_BIN &
 }
 
 stop() {
-        echo stop $(QIPERFD)
+        echo stop $QIPERFD
         # commands to kill application
-        killall $(QIPERFD)
+        killall $QIPERFD
 }
 
