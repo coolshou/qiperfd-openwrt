@@ -47,6 +47,7 @@ endef
 define Package/qiperfd/install
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/qiperfd.init $(1)/etc/init.d/qiperfd
+	$(INSTALL_DIR) $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/Release/qiperfd $(1)/usr/sbin/qiperfd
 	$(INSTALL_DIR) $(1)/usr/sbin/linux
 	$(INSTALL_DIR) $(1)/usr/sbin/$(TARGET_ARCH)_$(TARGET_SUFFIX)
