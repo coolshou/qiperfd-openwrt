@@ -14,7 +14,7 @@ PKG_RELEASE:=11408.04
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
 # which git commit should we use
-PKG_SOURCE_VERSION:=42bc7392451debf231d50322da35b8221e8d1fad
+PKG_SOURCE_VERSION:=35c5bb1e83ca46dfadb793fbb8c9f4e63089eca7
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=0
 PKG_USE_MIPS16:=0
