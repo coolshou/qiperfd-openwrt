@@ -59,6 +59,7 @@ define Build/Configure
 	# $(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	( cd $(PKG_BUILD_DIR)/lib/qssh/botan; \
 		python3 ./configure.py \
+		--cpu=$(ARCH) \
 		--cc-bin=$(TARGET_CROSS)g++ \
 		--ar-command="$(TARGET_CROSS)ar" \
 		--ar-options="cqs" \
