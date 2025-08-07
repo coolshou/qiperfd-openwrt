@@ -68,6 +68,8 @@ define Build/Configure
 		--disable-shared-library \
 	)
 	( cd $(PKG_BUILD_DIR)/lib/qssh; \
+		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
+		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
 		qmake QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 	( cd $(PKG_BUILD_DIR)/qiperfd ; \
