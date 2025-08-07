@@ -9,16 +9,16 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qiperfd
 PKG_VERSION:=0.14
-PKG_RELEASE:=11408.04
+PKG_RELEASE:=11408.07
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
 # which git commit should we use
-PKG_SOURCE_VERSION:=35c5bb1e83ca46dfadb793fbb8c9f4e63089eca7
+PKG_SOURCE_VERSION:=b41d1e02e8beaa5f8213fc9207ab8f1cee11ff08
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=0
 PKG_USE_MIPS16:=0
-PKG_BUILD_DEPENDS:= qt5
+PKG_BUILD_DEPENDS:= qt5 botan2
 PKG_MAINTAINER:=Jimmy
 
 include $(INCLUDE_DIR)/package.mk
@@ -57,20 +57,9 @@ define Build/Configure
 	# $(CP) ./files/qplatformdefs.h $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qplatformdefs.h
 	# $(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	# $(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
-	( cd $(PKG_BUILD_DIR)/lib/qssh/botan; \
-		python3 ./configure.py \
-		--cpu=$(ARCH) \
-		--cc-bin=$(TARGET_CROSS)g++ \
-		--ar-command="$(TARGET_CROSS)ar" \
-		--ar-options="cqs" \
-		--cxxflags="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-		--ldflags="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
-		--without-sphinx \
-		--without-rst2man \
-	)
 	( cd $(PKG_BUILD_DIR)/lib/qssh; \
 		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
-		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
+		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(TOOLCHAIN_DIR)/lib/" \
 		qmake QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 	( cd $(PKG_BUILD_DIR)/qiperfd ; \
@@ -104,7 +93,6 @@ define Build/Compile
 	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
 	PKG_CONFIG_SYSROOT="$(STAGING_DIR)" \
 	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-	$(MAKE) -j4 -C $(PKG_BUILD_DIR)/lib/qssh/botan; \
 	$(MAKE) -j4 -C $(PKG_BUILD_DIR)/lib/qssh; \
 	$(MAKE) -j4 -C $(PKG_BUILD_DIR)/qiperfd;
 endef
