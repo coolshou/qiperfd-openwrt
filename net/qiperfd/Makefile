@@ -65,6 +65,7 @@ define Build/Configure
 		--ar-options="cqs" \
 		--cxxflags="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 		--ldflags="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
+		--enable-modules="system_rng" \
 		--disable-shared-library \
 	)
 	( cd $(PKG_BUILD_DIR)/lib/qssh; \
