@@ -63,9 +63,10 @@ define Build/Configure
 		--cc-bin=$(TARGET_CROSS)g++ \
 		--ar-command="$(TARGET_CROSS)ar" \
 		--ar-options="cqs" \
-		--cxxflags="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) -DBOTAN_HAS_SYSTEM_RNG" \
+		--cxxflags="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 		--ldflags="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
-		--disable-shared-library \
+		--without-sphinx \
+		--without-rst2man \
 	)
 	( cd $(PKG_BUILD_DIR)/lib/qssh; \
 		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
