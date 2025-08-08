@@ -14,7 +14,7 @@ PKG_RELEASE:=11408.07
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
 # which git commit should we use
-PKG_SOURCE_VERSION:=eedda5214806d28192697e6ac5970e94eadb2833
+PKG_SOURCE_VERSION:=387e7f1485855e42590260363cb89080e1e06939
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=0
 PKG_USE_MIPS16:=0
@@ -53,28 +53,15 @@ define Package/qiperfd/install
 endef
 
 define Build/Configure
-	# $(INSTALL_DIR) $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++
-	# $(CP) ./files/qplatformdefs.h $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qplatformdefs.h
-	# $(CP) ./files/qmake.conf $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
-	# $(SED) 's@$$$$(TARGET_CROSS)@$(TARGET_CROSS)@g' $(PKG_BUILD_DIR)/mkspecs/linux-openwrt-g++/qmake.conf
 	( cd $(PKG_BUILD_DIR)/lib/qssh; \
 		TARGET_INCDIRS="$(TARGET_INCDIRS) $(STAGING_DIR)/include/botan-2/" \
 		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/lib/" \
 		qmake QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 	( cd $(PKG_BUILD_DIR)/qiperfd ; \
-		TARGET_CC="$(TARGET_CROSS)gcc" \
-		TARGET_CXX="$(TARGET_CROSS)g++" \
-		TARGET_AR="$(TARGET_CROSS)ar cqs" \
-		TARGET_OBJCOPY="$(TARGET_CROSS)objcopy" \
-		TARGET_RANLIB="$(TARGET_CROSS)ranlib" \
-		TARGET_CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-		TARGET_CXXFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-		TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) -lpthread -lrt" \
-		TARGET_INCDIRS="$(TARGET_INCDIRS) $(STAGING_DIR)/include/botan-2/" \
-		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/lib/" \
-		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-		qmake "QMAKE_CXXFLAGS+=-fpermissive" QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
+		qmake BOTANINCPATH=$(TOOLCHAIN_DIR)/include/botan-2 \
+		BOTANPATH=$(TOOLCHAIN_DIR) \
+		"QMAKE_CXXFLAGS+=-fpermissive" QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 endef
 
