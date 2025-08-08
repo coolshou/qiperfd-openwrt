@@ -56,6 +56,7 @@ define Build/Configure
 	( cd $(PKG_BUILD_DIR)/lib/qssh; \
 		qmake BOTANINCPATH=$(TOOLCHAIN_DIR)/include/botan-2 \
 		BOTANPATH=$(TOOLCHAIN_DIR)/lib \
+		"QMAKE_CXXFLAGS+=-fpermissive" \
 		QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 	( cd $(PKG_BUILD_DIR)/qiperfd ; \
