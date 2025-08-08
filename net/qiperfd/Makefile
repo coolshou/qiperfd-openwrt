@@ -14,7 +14,7 @@ PKG_RELEASE:=11408.08
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
 # which git commit should we use
-PKG_SOURCE_VERSION:=141136d3be3abfd1b382b75f664feae081722c3a
+PKG_SOURCE_VERSION:=494d5a11545ebdb1e103b5c79db6657836186276
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=0
 PKG_USE_MIPS16:=0
@@ -59,9 +59,9 @@ define Build/Configure
 		QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 	( cd $(PKG_BUILD_DIR)/qiperfd ; \
-		qmake BOTANINCPATH=$(TOOLCHAIN_DIR)/include/botan-2 \
-		BOTANPATH=$(TOOLCHAIN_DIR)/lib \
-		"QMAKE_CXXFLAGS+=-fpermissive" QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
+		qmake BOTANPATH=$(TOOLCHAIN_DIR)/lib \
+		"QMAKE_CXXFLAGS+=-fpermissive" \
+		QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 endef
 
