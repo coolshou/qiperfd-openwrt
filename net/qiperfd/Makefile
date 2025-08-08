@@ -60,7 +60,7 @@ define Build/Configure
 	)
 	( cd $(PKG_BUILD_DIR)/qiperfd ; \
 		qmake BOTANINCPATH=$(TOOLCHAIN_DIR)/include/botan-2 \
-		BOTANPATH=$(TOOLCHAIN_DIR) \
+		BOTANPATH=$(TOOLCHAIN_DIR)/lib \
 		"QMAKE_CXXFLAGS+=-fpermissive" QMAKESPEC=$(TOOLCHAIN_DIR)/bin/mkspecs/linux-openwrt-g++/ \
 	)
 endef
