@@ -14,7 +14,7 @@ PKG_RELEASE:=11408.08
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
 # which git commit should we use
-PKG_SOURCE_VERSION:=45d5a8366c8bdd57af35fb79bce5ac1e8eff2edf
+PKG_SOURCE_VERSION:=df43596ea384266d64586fe99e4a35fc7c56bb7b
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=0
 PKG_USE_MIPS16:=0
@@ -48,6 +48,7 @@ define Package/qiperfd/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/Release/qiperfd $(1)/usr/sbin/qiperfd
 	$(INSTALL_DIR) $(1)/usr/sbin/linux
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd/linux/$(ARCH)-$(TARGET_SUFFIX)/iperf3 $(1)/usr/sbin/linux
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd/linux/$(ARCH)-$(TARGET_SUFFIX)/iperf2.2.n $(1)/usr/sbin/linux
 	#$(TARGET_ARCH_PACKAGES)_$(TARGET_SUFFIX)
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/qiperfd/linux/
 endef
