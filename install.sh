@@ -14,3 +14,6 @@ opkg install -o /tmp/qiperf qiperfd_*.ipk
 #ln -s /tmp/qiperf/usr/sbin/qiperfd /usr/sbin/
 #ln -s /tmp/qiperf/etc/init.d/qiperfd /etc/init.d/
 
+if [ ! -e /etc/xdg/alphanetworks/qiperfd.ini ];then
+	ln -sf /tmp/qiperf/etc/xdg/alphanetworks/qiperfd.ini /etc/xdg/alphanetworks/qiperfd.ini
+fi
