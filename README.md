@@ -42,20 +42,20 @@ make package/qiperfd/compile V=s
 
 ipk will be in bin\packages\<arch>\
 
-5.1. install depend lib (_XXXX is package version, _YYYY is you platform name eq: aarch64_cortex-a53)
+5. install (in device, temporary, will not exist after reboot)
 
 ```
-opkg install botan_XXXX_YYYY.ipk \
-    qt5-core_XXXX_YYYY.ipk \
-    qt5-network_XXXX_YYYY.ipk \
-    qt5-widgets_XXXX_YYYY.ipk \
-    qt5-websockets_XXXX_YYYY.ipk \
-    qt5-serialport_XXXX_YYYY.ipk 
-
+mkdir /tmp/qiperf
+cd /tmp/qiperf
+wget http://192.168.1.47:8888/qiperfd-0.15.11408.25.tar
+tar xvf qiperfd-0.15.11408.25.tar
+./install.sh
 ```
 
-5.2. install qiperfd
+6. config vi /etc/xdg/alphanetworks/qiperfd.ini
+   change ifname=br-lan to the interface which will broadcast device info
+7. run qiperfd
 
-```
-opkg install qiperfd_XXXX_YYYY.ipk
-```
+   ```
+   ./run.sh
+   ```
