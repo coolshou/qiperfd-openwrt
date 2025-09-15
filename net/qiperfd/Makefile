@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qiperfd
-PKG_VERSION:=0.15
-PKG_RELEASE:=11408.25
+PKG_VERSION:=0.16
+PKG_RELEASE:=11409.12
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
