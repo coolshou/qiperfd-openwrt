@@ -3,6 +3,6 @@
 
 rm *.ipk
 rm qiperfd-*.tar
-wget http://192.168.1.47:8888/qiperfd-0.15.11408.25.tar
+wget http://192.168.1.47:8080/qiperfd-0.16.11409.16.tar
 
-tar xvf qiperfd-0.15.11408.25.tar
+tar xvf qiperfd-0.16.11409.16.tar

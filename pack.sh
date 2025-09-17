@@ -1,11 +1,16 @@
 #!/bin/sh
 
-VERSION=0.15.11408.25
-BASEDIR=/home/jimmy/SOFT/test_driver/openwrt/mt7988/openwrt-24.10
+VERSION=0.16.11409.16
+BASEDIR=../mt7988/openwrt-24.10
+OUTDIR=/home/jimmy/SOFT/work/qiperf-release.git/$VERSION
+if [ ! -e $OUTDIR ]; then
+ mkdir -p $OUTDIR
+fi
+
 ARCH=aarch64_cortex-a53
 SOURCEDIR=$BASEDIR/bin/packages/$ARCH/
 
-tar -cvf qiperfd-$VERSION.tar \
+tar -cvf $OUTDIR/qiperfd-$VERSION.tar \
 	--transform='s|.*/||' \
 	install.sh \
 	install-depend.sh \
