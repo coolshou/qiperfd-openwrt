@@ -1,6 +1,8 @@
 #!/bin/sh
 #remove
-opkg remove -o /tmp/qiperf \
+DESTDIR=/tmp/qiperf 
+
+opkg remove -o ${DESTDIR} \
 	qiperfd \
 	qt5-serialport \
 	qt5-websockets \

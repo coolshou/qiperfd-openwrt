@@ -1,4 +1,6 @@
 #!/bin/sh
 
+DESTDIR=/tmp/qiperf 
+
 killall qiperfd
-opkg remove -o /tmp/qiperf qiperfd
+opkg remove -o ${DESTDIR} qiperfd

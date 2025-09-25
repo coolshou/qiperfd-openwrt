@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=0.16.11409.16
+VERSION=0.16.11409.22
 BASEDIR=../mt7988/openwrt-24.10
 OUTDIR=/home/jimmy/SOFT/work/qiperf-release.git/$VERSION
 if [ ! -e $OUTDIR ]; then
