@@ -1,9 +1,10 @@
 #!/bin/sh
 
 #VERSION=0.17.11409.22
-PKG_VERSION=$(grep '^PKG_VERSION:=' net/qiperfd/Makefile | cut -d':=' -f2 | xargs)
-PKG_RELEASE=$(grep '^PKG_RELEASE:=' net/qiperfd/Makefile | cut -d':=' -f2 | xargs)
+PKG_VERSION=$(grep '^PKG_VERSION:=' net/qiperfd/Makefile | cut -d'=' -f2 | xargs)
+PKG_RELEASE=$(grep '^PKG_RELEASE:=' net/qiperfd/Makefile | cut -d'=' -f2 | xargs)
 VERSION=$PKG_VERSION.$PKG_RELEASE
+#echo "VERSION $VERSION"
 
 BASEDIR=../mt7988/openwrt-24.10
 OUTDIR=/home/jimmy/SOFT/work/qiperf-release.git/$VERSION
