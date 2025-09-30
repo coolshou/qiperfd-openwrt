@@ -1,7 +1,10 @@
 #!/bin/sh
 
 DESTDIR=/tmp/qiperf 
-mkdir -p ${DESTDIR}/var/lock/
+if [ ! -e ${DESTDIR}/var/lock/ ]; then
+  mkdir -p ${DESTDIR}/var/lock/
+fi
+
 
 ./install-depend.sh
 
