@@ -13,9 +13,12 @@ if [ ! -e $OUTDIR ]; then
 fi
 
 ARCH=aarch64_cortex-a53
+CPU_ARCH="${ARCH%%_*}"
+#echo "CPU_ARCH $CPU_ARCH"
+
 SOURCEDIR=$BASEDIR/bin/packages/$ARCH/
 
-tar -cvf $OUTDIR/qiperfd-$VERSION.tar \
+tar -cvf $OUTDIR/openwrt-qiperfd-${VERSION}_$CPU_ARCH.tar \
 	--transform='s|.*/||' \
 	install.sh \
 	install-depend.sh \
