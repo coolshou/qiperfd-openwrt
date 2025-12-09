@@ -1,6 +1,9 @@
 #!/bin/sh
 
 DESTDIR=/tmp/qiperf 
+if [ ! -e ${DESTDIR} ]; then
+  ln -s /mnt/ubi0_6 ${DESTDIR}
+fi
 if [ ! -e ${DESTDIR}/var/lock/ ]; then
   mkdir -p ${DESTDIR}/var/lock/
 fi
