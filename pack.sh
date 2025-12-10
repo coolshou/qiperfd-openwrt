@@ -18,7 +18,8 @@ CPU_ARCH="${ARCH%%_*}"
 
 SOURCEDIR=$BASEDIR/bin/packages/$ARCH/
 
-tar -cvf $OUTDIR/openwrt-qiperfd-${VERSION}_$CPU_ARCH.tar \
+echo "tar in to $OUTDIR/openwrt-qiperfd-${VERSION}_$CPU_ARCH.tar"
+tar -cf $OUTDIR/openwrt-qiperfd-${VERSION}_$CPU_ARCH.tar \
 	--transform='s|.*/||' \
 	install.sh \
 	install-depend.sh \
@@ -45,4 +46,5 @@ tar -cvf $OUTDIR/openwrt-qiperfd-${VERSION}_$CPU_ARCH.tar \
 	$SOURCEDIR/packages/libudev-zero_1.0.3-r2_$ARCH.ipk \
 	$SOURCEDIR/packages/libjpeg-turbo_3.0.3-r1_$ARCH.ipk \
 	$SOURCEDIR/libqt/*.ipk \
-	$SOURCEDIR/qiperfd/*.ipk
+	$SOURCEDIR/qiperfd/*.ipk \
+	2> /dev/null
