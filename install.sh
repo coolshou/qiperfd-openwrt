@@ -26,4 +26,6 @@ fi
 if [ ! -e /etc/xdg/alphanetworks/qiperfd.ini ];then
 	ln -sf ${DESTDIR}/etc/xdg/alphanetworks/qiperfd.ini /etc/xdg/alphanetworks/qiperfd.ini
 fi
-cp run.sh ${DESTDIR}
+if [ ! -e ${DESTDIR}/run.sh ]; then
+	cp run.sh ${DESTDIR}
+fi
