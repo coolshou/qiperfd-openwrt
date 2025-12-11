@@ -5,6 +5,10 @@ START=50
 STOP=15
 
 DESTDIR=/tmp/qiperf 
+if test ! -e "$DESTDIR"; then
+  ln -s /mnt/ubi0_6 ${DESTDIR}
+fi
+
 QIPERFD="qiperfd"
 QIPERFD_BIN="${DESTDIR}/usr/sbin/$QIPERFD"
 
