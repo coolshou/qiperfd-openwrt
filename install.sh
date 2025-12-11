@@ -19,7 +19,9 @@ opkg install -o ${DESTDIR} qt5-core_5.15-r17_aarch64_cortex-a53.ipk \
 opkg install -o ${DESTDIR} qiperfd_*.ipk
 
 #ln -s ${DESTDIR}/usr/sbin/qiperfd /usr/sbin/
-#ln -s ${DESTDIR}/etc/init.d/qiperfd /etc/init.d/
+if [ ! -e /etc/init.d/qiperfd ]; then
+	ln -s ${DESTDIR}/etc/init.d/qiperfd.init /etc/init.d/qiperfd
+fi
 if [ ! -e /etc/xdg/alphanetworks ]; then
 	mkdir -p /etc/xdg/alphanetworks
 fi

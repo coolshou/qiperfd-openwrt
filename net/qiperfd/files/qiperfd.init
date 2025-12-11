@@ -4,10 +4,12 @@
 START=50
 STOP=15
 
+DESTDIR=/tmp/qiperf 
 QIPERFD="qiperfd"
-QIPERFD_BIN="/usr/sbin/$QIPERFD"
+QIPERFD_BIN="${DESTDIR}/usr/sbin/$QIPERFD"
 
 start() {
+        export LD_LIBRARY_PATH=${DESTDIR}/usr/lib
         echo start $QIPERFD
         # commands to launch application
         $QIPERFD_BIN &
