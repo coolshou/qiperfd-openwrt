@@ -20,7 +20,7 @@ opkg install -o ${DESTDIR} qiperfd_*.ipk
 
 #ln -s ${DESTDIR}/usr/sbin/qiperfd /usr/sbin/
 if [ ! -e /etc/init.d/qiperfd ]; then
-	ln -s ${DESTDIR}/etc/init.d/qiperfd.init /etc/init.d/qiperfd
+	ln -s ${DESTDIR}/etc/init.d/qiperfd /etc/init.d/qiperfd
 fi
 if [ ! -e /etc/xdg/alphanetworks ]; then
 	mkdir -p /etc/xdg/alphanetworks
