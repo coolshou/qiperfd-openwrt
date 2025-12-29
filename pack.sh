@@ -28,6 +28,8 @@ tar -cf $OUTDIR/openwrt-qiperfd-${VERSION}_$CPU_ARCH.tar \
 	uninstall.sh \
 	run.sh \
 	update.sh \
+	net/qiperfd/files/qiperfd.ini \
+	net/qiperfd/files/qiperfd.init \
 	$BASEDIR/bin/targets/mediatek/filogic/packages/libc_1.2.5-r4_$ARCH.ipk \
 	$BASEDIR/bin/targets/mediatek/filogic/packages/librt_1.2.5-r4_$ARCH.ipk \
 	$SOURCEDIR/base/zlib_1.3.1-r1_$ARCH.ipk \
