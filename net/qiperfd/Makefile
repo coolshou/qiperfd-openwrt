@@ -9,12 +9,12 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qiperfd
 PKG_VERSION:=0.18
-PKG_RELEASE:=11501.06
+PKG_RELEASE:=11507.15
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/coolshou/qiperf.git
 # which git commit should we use
-PKG_SOURCE_VERSION:=6259fad4044219cfd2ccc18756d845fd5227fa3f
+PKG_SOURCE_VERSION:=e981195dcd004b7dd85d4f9ebac8d799297ab3f8
 PKG_BUILD_DIR=$(BUILD_DIR)/qiperfd-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=0
 PKG_USE_MIPS16:=0
